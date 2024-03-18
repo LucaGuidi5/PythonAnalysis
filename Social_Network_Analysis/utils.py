@@ -19,7 +19,7 @@ def get_dataset(n_times=50):
 
     heroes = nx.from_pandas_edgelist(df, source = "hero1", target = "hero2")
 
-    # get bigger connected component
+    # get the biggest connected component
     Gcc = sorted(nx.connected_components(heroes), key=len, reverse=True)
     heroes = heroes.subgraph(Gcc[0])
     return heroes
