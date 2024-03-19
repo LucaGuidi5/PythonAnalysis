@@ -24,14 +24,16 @@ def get_dataset(n_times=50):
     heroes = heroes.subgraph(Gcc[0])
     return heroes
 
-def draw(G, pos, measures, measure_name):
+def draw(G, pos, measures, measure_name, draw_labels=False):
     
     nodes = nx.draw_networkx_nodes(G, pos, node_size=250, cmap=plt.cm.plasma, 
                                    node_color=list(measures.values()),
                                    nodelist=measures.keys())
     nodes.set_norm(mcolors.SymLogNorm(linthresh=0.01, linscale=1))
     
-    labels = nx.draw_networkx_labels(G, pos)
+    if draw_labels:
+        labels = nx.draw_networkx_labels(G, pos)
+        
     edges = nx.draw_networkx_edges(G, pos)
 
     plt.title(measure_name)
